@@ -17,13 +17,13 @@ let r = Math.floor(Math.random() *characters.length)
  console.log(randomId_2);
 
  //generates a random hexadecimal number.
- let randomHexaId ='';
+ let randomHexaId ='#';
  let hexaDecimal = '0123456789abcdef';
  for(s=0; s<6; s++){
      let randomHexa =Math.floor(Math.random()* 16);
      randomHexaId += hexaDecimal[randomHexa];
  }
- console.log(`#${randomHexaId}`);
+ console.log(`${randomHexaId}`);
 
 //generates a random rgb color number.
  let randomRgbId =[]
