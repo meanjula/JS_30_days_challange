@@ -1,44 +1,8 @@
-/*const fetch = require("node-fetch")
 
-const url = 'https://restcountries.eu/rest/v2/all'
-let mostSpokenLanguage =[];
-const fetchData = async () => {
-    try {
-    const response = await fetch(url)
-    const data = await response.json()
-    countries = data
-    /*countries.forEach(country => {
-        console.log(`country:${country.name}, capital:${country.capital}, population:${country.population}`) 
-
-    })
-    let country_arr = {}
-    countries.forEach(country => {
-        country_arr[country.name] = country.languages.length
-        //console.log(`country:${country.language}, count:${count}`)
-
-    })
-    // country_arr.sort(function(a, b){return a-b})
-    // console.log(mostSpokenLanguage.slice(0,10))
-    // console.log(typeof country_arr)
-    function sortObjectEntries(obj){
-        return  Object.entries(obj).sort((a,b)=>b[1]-a[1])
-        }
-    res = sortObjectEntries(country_arr).slice(0,10)
-    final = {}
-    for(i=0;i<res.length;i++){
-    final[res[i][0]] = res[i][1]
-    }
-    console.log(final)
-    }catch(err){
-        console.log('err')
-    }
-}
-console.log('===== async and await')   
-fetchData() */
       
 const countries= require('../countries_data')
 //sort countries by name
-/*let sortCountryName =countries
+let sortCountryName =countries
 .sort((a,b) =>{
     if(a.name < b.name){
         return -1
@@ -141,13 +105,7 @@ const statistics = {
     console.log('Mean: ', statistics.mean(ages))
     console.log('Median: ',statistics.median(ages))
 
-    console.log(statistics.describe(ages))*/
+    console.log(statistics.describe(ages))
 
-let langArr =[];
-countries.map(country =>{
-langArr.push(country.languages)    
-})
-console.log(langArr)
-const langSet = new Set(langArr)
-console.log(langSet)
+
 
