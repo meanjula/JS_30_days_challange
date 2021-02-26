@@ -36,7 +36,10 @@ let personAccount = {
         return balance
     },
 }
-let addincome =personAccount.incomes.freelance = 50
+let addincome =Object.assign(personAccount.incomes,{freelance:50})
+let addExpenses = Object.assign(personAccount.expenses,{sports:50})
+console.log(personAccount.expenses)
+console.log(personAccount.incomes)
 console.log(personAccount)
 console.log(personAccount.totalIncome())
 console.log(personAccount.totalExpenses())
@@ -84,38 +87,140 @@ const users = [
         isLoggedIn: false
     }
 ]
-users.signUp = function (username, email, password){
-    let id =''
-    let date = new Date()
-    let chars ="abcdefghiklmnopqrstuvwxyz"     
-    for(i=0; i<6; i++){
-            let idIndex = Math.floor(Math.random() * chars.length)
-            id += chars[idIndex]
+signUp = function (username, email, password){
+    let add = true;
+    users.forEach(user =>{
+        if(user.username === username && user.email === email){
+            return add = false;                   
         }
-        let newUser= {        
-               _id: id,
-                username: username,
-                email: email,
-                password: password,
-                createdAt:`${date.getDay()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`,
-                isLoggedIn: 'false'
-            }; 
-        let add = true;
-        add ?
-        users.push(newUser):
-        console.log(`User ${username} already exists`);
-        users.forEach(user =>{
-            if(user.username === username && user.email === email){
-                return add = false;                   
+        else{
+            return add=true
+        }
+    })
+    if(add == true){
+        let id =''
+        let date = new Date()
+        let chars ="abcdefghiklmnopqrstuvwxyz"     
+        for(i=0; i<6; i++){
+                let idIndex = Math.floor(Math.random() * chars.length)
+                id += chars[idIndex]
             }
-            else{return}
+            let newUser= {        
+                _id: id,
+                    username: username,
+                    email: email,
+                    password: password,
+                    createdAt:`${date.getDay()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`,
+                    isLoggedIn: 'false'
+                }; 
+            users.push(newUser)
+    }
+    
+    else{
+        console.log(`User ${username} already exists`);
+    }
+}
+    // console.log(users) 
+    
+signUp('Thomas', 'thomas@thomas.com', '123333')
+
+  signIn =function(email,password){
+      let logged_in = false
+      for(const user of users){
+          if(user.email === email && user.password === password){
+              logged_in = true
+              console.log(`${user.username} signin`)
+              break;
+          }
+      }
+      if(logged_in === false){
+          console.log('wrong email or password')
+      }
+
+  }
+  signIn('brook@brook.com',  '123111')
+  signIn('anjula@ghale.com', '123456')
+
+    
+  const products = [
+    {
+      _id: 'eedfcf',
+      name: 'mobile phone',
+      description: 'Huawei Honor',
+      price: 200,
+      ratings: [
+        { userId: 'fg12cy', rate: 5 },
+        { userId: 'zwf8md', rate: 4.5 }
+      ],
+      likes: []
+    },
+    {
+      _id: 'aegfal',
+      name: 'Laptop',
+      description: 'MacPro: System Darwin',
+      price: 2500,
+      ratings: [],
+      likes: ['fg12cy']
+    },
+    {
+      _id: 'hedfcg',
+      name: 'TV',
+      description: 'Smart TV:Procaster',
+      price: 400,
+      ratings: [{ userId: 'fg12cy', rate: 5 }],
+      likes: ['fg12cy']
+    }
+  ]
+ products.forEach(product => {
+        let ratingVal = product.ratings.forEach(i =>{
+            console.log(`rating ${i.rate}`)
         })
-        console.log(users)
-        } 
-    
-  console.log(users.signUp('thomas', 'thomas@thomas.com', '123333'))
+        console.log(`${product.name}`)
+    })
 
-  
-
+rateProduct = function (productId, userId){
+    let idIndex = products.findIndex(product=>{
+        product._id === productId
+    })
+    console.log(idIndex)
+    let newRating = {userId:userId, rate:Math.floor(Math.random() * 5)}
+    console.log(newRating)
+    if(idIndex === -1){
+       console.log('product not found')}
+    else{ 
+       console.log(`${products[idIndex].ratings.push(newRating)}`)}
     
-   
+}
+rateProduct('hedfcg','fg12cy')
+
+
+averageRating = function(){
+    products.forEach((product) => {
+        let sum = 0
+        let average = 0
+       product.ratings.forEach((ratin)=>{
+        sum += ratin.rate
+        average = sum/2
+       })
+       console.log(`Average rating for '${product._id}' is ${average}`)
+    })
+}
+averageRating();
+
+likeProduct =function(userId, productId){
+    products.forEach(product => {
+    let likes = product.likes
+    if(product._id === productId){
+        userInd = likes.indexOf(userId)
+    if(likes.includes(userId)){
+        let updatedLikes =likes.splice(userInd,1)
+        console.log(updatedLikes)
+    }
+    else{
+        likes.push(userId)
+        console.log(likes)
+    }
+    }
+})
+}
+likeProduct('struuu','hedfcg')   
