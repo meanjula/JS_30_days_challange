@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document Object Model:30 Days Of JavaScript</title>
+  </head>
+
+  <body>
+    <h1>Generate keyboard code</h1>
+    <button>Press any keyboard key</button>
+    <p></p>
+
+    <script >
+      let body = document.querySelector('body')
+      let h1 = document.querySelector('h1')
+      let button = document.querySelector('button')
+      let p = document.querySelector('p')
+     
+     console.log(body)
+      function createkey(event){
+          let a = event.charCode
+          p.innerText = a
+          p.style.color = ' #00cc99'
+          p.style.border ='solid #d2d4d6'
+          p.style.borderRadius = '5px'
+          p.style.height ='100px'
+          p.style.width = '150px'
+          p.style.fontSize = '2.5em'
+          p.style.fontWeight = 'bold'
+          p.style.background ='white'
+          p.style.paddingTop='40px'
+      
+        }
+      let span
+      function createSpan(event){
+        button.innerHTML = `You pressed <span id = "spa">${event.key}</span>`
+        spa =document.querySelector('#spa')
+        spa.style.color=' #00cc99'
+      }
+      button.addEventListener('keypress', (event) => {
+        createSpan(event)
+        createkey(event)
+  
+      })
+      body.style.textAlign = 'center'
+      body.style.fontFamily = 'arial'
+      body.style.fontSize = '1em'
+      body.style.width = '90%'
+      body.style.display ='flex'
+      body.style.background = 'white'
+      body.style.alignItems = 'center'
+      body.style.flexDirection = 'column'
+      body.style.backgroundColor ='#a9ccc7'
+
+      h1.style.marginTop = '100px'
+      
+      
+      button.style.color ='#26231c'
+      button.style.border = 'solid #d2d4d6'
+      button.style.borderRadius = '5px'
+      button.style.height = '70px'
+      button.style.width = '50%'
+      button.style.fontSize = '1.5rem'
+      button.style.fontWeight ='bold'
+     
+      button.style.alignSelf = 'center'
+      button.style.margin = 'auto'
+      button.style.marginTop = '30px'
+  
+      
+
+    </script>
+  </body>
+</html>
