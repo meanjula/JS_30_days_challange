@@ -1,0 +1,31 @@
+body {
+    margin:0px;
+    padding:0px;
+    text-align: center;
+    font-size: 1rem;
+    font-family :'montserrat';
+    height : 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+#countries {
+    background: rgb(243, 240, 240);
+ }
+#container {
+    text-align:center;
+ }
+canvas {
+    background: rgb(243, 240, 240);
+    border:1px solid rgba(129, 124, 124, 0.8);
+    padding: 10px; 
+}
+h2{
+    color:rgb(219, 203, 52);
+    font-size: 2rem;
+}
+.subtitle{
+    font-size: 1rem;
+}
+button{
+    background-color: rgb(207, 191, 41);
+}
